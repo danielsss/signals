@@ -46,7 +46,13 @@ class Signals extends EventEmitter {
     const keys = Object.keys(signals);
       for (const key of keys) {
         const lower = key.toLowerCase();
-        this[lower] = function() {
+        const handler = function() {
+          if (this[`called_${lower}`]) {
+            debug(`Do not call ${lower}|${key} repeatedly. The event is listening`);
+            return false;
+          }
+
+          this[`called_${lower}`] = true;
           let idx = 0;
           const recursive = async (...args) => {
             if (this.hooks.length === 0) {
@@ -76,7 +82,8 @@ class Signals extends EventEmitter {
               this.on(lower, recursive);
             }
           }
-        }
+        };
+        this[key] = this[lower] = handler;
       }
   }
 }
