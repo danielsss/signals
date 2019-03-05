@@ -1,5 +1,6 @@
 'use strict';
 
+const {EventEmitter} = require('events');
 const debug = require('debug')('signals:index');
 const os = require('os');
 
@@ -7,12 +8,22 @@ const signals = os.constants.signals;
 
 const INIT = Symbol('_init');
 
-class Signals {
+class Signals extends EventEmitter {
   constructor(options={}) {
+    super(options);
+
+    this.listener = options.listener || 'process';
+    this.lower = options.lowerEventName || false;
     this.hooks = [];
     this[INIT]();
   }
 
+  /**
+   * @description Adding hooks before program exit
+   * @param {Function | Function[]} fn
+   * @param {Object} context - the context will be bind to fns
+   * @return {void} 
+   */
   before(fn, context=null) {
     if (typeof fn !== 'function') {
       if (!Array.isArray(fn)) {
@@ -53,7 +64,18 @@ class Signals {
               throw err;
             }
           };
-          process.on(key, recursive);
+
+          if (this.listener === 'process') {
+            process.on(key, recursive);
+            if (this.lower) {
+              process.on(lower, recursive);
+            }
+          } else {
+            this.on(key, recursive);
+            if (this.lower) {
+              this.on(lower, recursive);
+            }
+          }
         }
       }
   }
