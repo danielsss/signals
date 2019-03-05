@@ -1,2 +1,3 @@
-# signals
-salt before node process exit
+# Signal salt
+
+adding salt before node process exit

@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/danielsss/signals/issues"
   },
-  "homepage": "https://github.com/danielsss/signals#readme"
+  "homepage": "https://github.com/danielsss/signals#readme",
+  "dependencies": {
+    "debug": "^4.1.1"
+  }
 }
