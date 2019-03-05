@@ -42,6 +42,10 @@ class Signals extends EventEmitter {
     }
   }
 
+  /**
+   * @description Initializing methods
+   * @private
+   */
   [INIT]() {
     const keys = Object.keys(signals);
       for (const key of keys) {
