@@ -1,0 +1,26 @@
+{
+  "name": "signals",
+  "version": "1.0.0",
+  "description": "salt before node process exit",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielsss/signals.git"
+  },
+  "keywords": [
+    "signal",
+    "signal-salt",
+    "salt",
+    "signal.js",
+    "signal-salt.js"
+  ],
+  "author": "danielsss",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielsss/signals/issues"
+  },
+  "homepage": "https://github.com/danielsss/signals#readme"
+}
