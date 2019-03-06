@@ -25,7 +25,7 @@ exit.SIGTERM(); // start to listen the signal of sigterm
 // also work if the lowerEventName specified `true` value
 // exit.sigterm(); 
 
-process.emit('SIGTERM'/* sigterm */); // Trigger event 
+exit.emit('SIGTERM'/* sigterm */); // Trigger event 
 ```
 
 ## Others
