@@ -34,12 +34,12 @@ Also see: [Examples](test/__example__)
 
 ## Options of `Signals`
 
-* lowerEventName - the lower name of method will be created, otherwise only has upper name.
-* listener - [process | EventEmitter] are supported currently. [default: process]
+* `lowerEventName` - the lower name of method will be created, otherwise only has upper name.
+* `listener` - [ `process` | `EventEmitter` ] are supported currently. [ `default`: process ]
 
 ## Contents of `Signals`
 
-* .before([fn1, fn2], context) - only accept function or function of `Array`
+* **.before([fn1, fn2], context)** - only accept function or function of `Array`
 
 ## LICENCE
 
