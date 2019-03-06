@@ -1,4 +1,7 @@
+[![Build Status](https://travis-ci.org/danielsss/signals.svg?branch=master)](https://travis-ci.org/danielsss/signals)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a09ab2edb2854d93b373888bd3a722ac)](https://www.codacy.com/app/danielsss/signals?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=danielsss/signals&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/a09ab2edb2854d93b373888bd3a722ac)](https://www.codacy.com/app/danielsss/signals?utm_source=github.com&utm_medium=referral&utm_content=danielsss/signals&utm_campaign=Badge_Coverage)
+
 
 # Signal salt
 
