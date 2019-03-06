@@ -30,6 +30,8 @@ exit.SIGTERM(); // start to listen the signal of sigterm
 exit.emit('SIGTERM'/* sigterm */); // Trigger event 
 ```
 
+Also see: test/\_\_example\_\_ directory
+
 ## Options of `Signals`
 
 * lowerEventName - the lower name of method will be created, otherwise only has upper name.
