@@ -30,7 +30,7 @@ exit.SIGTERM(); // start to listen the signal of sigterm
 exit.emit('SIGTERM'/* sigterm */); // Trigger event 
 ```
 
-Also see: test/\_\_example\_\_ directory
+Also see: [Examples](test/__example__)
 
 ## Options of `Signals`
 
