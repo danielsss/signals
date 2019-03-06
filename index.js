@@ -48,47 +48,47 @@ class Signals extends EventEmitter {
    */
   [INIT]() {
     const keys = Object.keys(signals);
-      for (const key of keys) {
-        const lower = key.toLowerCase();
-        const handler = function() {
-          if (this[`called_${lower}`]) {
-            debug(`Do not call ${lower}|${key} repeatedly. The event is listening`);
+    for (const key of keys) {
+      const lower = key.toLowerCase();
+      const handler = function() {
+        if (this[`called_${lower}`]) {
+          debug(`Do not call ${lower}|${key} repeatedly. The event is listening`);
+          return false;
+        }
+
+        this[`called_${lower}`] = true;
+        let idx = 0;
+        const recursive = async (...args) => {
+          if (this.hooks.length === 0) {
+            debug('empty hooks');
             return false;
           }
 
-          this[`called_${lower}`] = true;
-          let idx = 0;
-          const recursive = async (...args) => {
-            if (this.hooks.length === 0) {
-              debug('empty hooks');
-              return false;
+          try {
+            if (this.hooks.length === idx) {
+              return true;
             }
-
-            try {
-              if (this.hooks.length === idx) {
-                return true;
-              }
-              idx++;
-              recursive(await this.hooks[idx - 1].apply(this, args));
-            } catch (err) {
-              throw err;
-            }
-          };
-
-          if (this.listener === 'process') {
-            process.on(key, recursive);
-            if (this.lower) {
-              process.on(lower, recursive);
-            }
-          } else {
-            this.on(key, recursive);
-            if (this.lower) {
-              this.on(lower, recursive);
-            }
+            idx++;
+            recursive(await this.hooks[idx - 1].apply(this, args));
+          } catch (err) {
+            throw err;
           }
         };
-        this[key] = this[lower] = handler;
-      }
+
+        if (this.listener === 'process') {
+          process.on(key, recursive);
+          if (this.lower) {
+            process.on(lower, recursive);
+          }
+        } else {
+          this.on(key, recursive);
+          if (this.lower) {
+            this.on(lower, recursive);
+          }
+        }
+      };
+      this[key] = this[lower] = handler;
+    }
   }
 }
 

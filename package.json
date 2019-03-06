@@ -4,7 +4,8 @@
   "description": "salt before node process exit",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "node_modules/.bin/eslint ."
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,9 @@
   "homepage": "https://github.com/danielsss/signals#readme",
   "dependencies": {
     "debug": "^4.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.1",
+    "eslint-config-daniels": "^1.1.0"
   }
 }
