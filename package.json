@@ -1,5 +1,5 @@
 {
-  "name": "signals",
+  "name": "signaleries",
   "version": "1.0.0",
   "description": "salt before node process exit",
   "main": "index.js",

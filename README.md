@@ -10,15 +10,15 @@ adding salt before node process exit
 ## Installation
 
 ```shell
-npm i --save signals
+npm i --save signaler
 ```
 
 ## Usage
 
 ```js
-const Signals = require('signals');
+const Signaler = require('signaler');
 
-const exit = new Signals();
+const exit = new Signaler();
 exit.before([fn1, fn2, fn3]);
 // also: exit.before(fn1, context); context default: null
 //       exit.before(fn2, context);
@@ -32,7 +32,7 @@ exit.emit('SIGTERM'/* sigterm */); // Trigger event
 
 Also see: [Examples](test/__example__)
 
-## Contents of `Signals`
+## Contents of `Signaler`
 
 * **.before([fn1, fn2], context)** - only accept function or function of `Array`
 
