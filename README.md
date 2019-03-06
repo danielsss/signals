@@ -15,12 +15,7 @@ npm i --save signals
 ```js
 const Signals = require('signals');
 
-const options = {
-  lowerEventName: true,
-  listener: 'events',
-};
-
-const exit = new Signals(options);
+const exit = new Signals();
 exit.before([fn1, fn2, fn3]);
 // also: exit.before(fn1, context); context default: null
 //       exit.before(fn2, context);
@@ -33,11 +28,6 @@ exit.emit('SIGTERM'/* sigterm */); // Trigger event
 ```
 
 Also see: [Examples](test/__example__)
-
-## Options of `Signals`
-
-* `lowerEventName` - the lower name of method will be created, otherwise only has upper name.
-* `listener` - [ `process` | `EventEmitter` ] are supported currently. [ `default`: process ]
 
 ## Contents of `Signals`
 

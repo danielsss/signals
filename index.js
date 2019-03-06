@@ -11,9 +11,6 @@ const INIT = Symbol('_init');
 class Signals extends EventEmitter {
   constructor(options={}) {
     super(options);
-
-    this.listener = options.listener || 'process';
-    this.lower = options.lowerEventName || false;
     this.hooks = [];
     this[INIT]();
   }
@@ -29,7 +26,7 @@ class Signals extends EventEmitter {
       if (!Array.isArray(fn)) {
         throw new Error('before hook accept function or array<function>');
       }
-
+      debug('arguments: ', fn);
       for (const func of fn) {
         if (typeof func !== 'function') {
           this.hooks = [];
@@ -71,21 +68,15 @@ class Signals extends EventEmitter {
             idx++;
             recursive(await this.hooks[idx - 1].apply(this, args));
           } catch (err) {
+            /* istanbul ignore next */
             throw err;
           }
         };
 
-        if (this.listener === 'process') {
-          process.on(key, recursive);
-          if (this.lower) {
-            process.on(lower, recursive);
-          }
-        } else {
-          this.on(key, recursive);
-          if (this.lower) {
-            this.on(lower, recursive);
-          }
-        }
+        process.on(key, recursive);
+        process.on(lower, recursive);
+        this.on(key, recursive);
+        this.on(lower, recursive);
       };
       this[key] = this[lower] = handler;
     }
