@@ -36,6 +36,35 @@ Also see: [Examples](test/__example__)
 
 * **.before([fn1, fn2], context)** - only accept function or function of `Array`
 
+## Available Signals
+
+##### defaults
+
+* **SIGABRT**
+* **SIGALRM**
+* **SIGHUP**
+* **SIGINT**
+* **SIGTERM**
+
+##### non-win32
+
+* **SIGVTALRM**
+* **SIGXCPU**
+* **SIGXFSZ**
+* **SIGUSR2**
+* **SIGTRAP**
+* **SIGSYS**
+* **SIGQUIT**
+* **SIGIOT**
+
+##### linux
+
+* **SIGIO**
+* **SIGPOLL**
+* **SIGPWR**
+* **SIGSTKFLT**
+* **SIGUNUSED**
+
 ## LICENCE
 
 MIT License
