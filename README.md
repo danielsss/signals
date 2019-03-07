@@ -7,6 +7,10 @@
 
 adding salt before node process exit
 
+## Requirements
+
+Node.js version >= 7.*.*
+
 ## Installation
 
 ```shell
