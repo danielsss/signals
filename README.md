@@ -23,7 +23,10 @@ npm i --save signaler
 const Signaler = require('signaler');
 
 const exit = new Signaler();
-exit.before([fn1, fn2, fn3]);
+exit.before([function(){
+  // logic code
+  process.exit(0); // exit with the success code
+}]);
 // also: exit.before(fn1, context); context default: null
 //       exit.before(fn2, context);
 
