@@ -42,6 +42,8 @@ Also see: [Examples](test/__example__)
 ## Methods of `Signaler`
 
 * **.before([fn1, fn2], context)** - only accept function or function of `Array`
+* **.remove(name | index)** - remove one with the hook you added
+* **.names()** - show you all names of hook you added
 
 ## Available `Signals`
 
