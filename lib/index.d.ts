@@ -4,11 +4,23 @@ declare namespace __SIGNALS__ {
   export interface Signals extends EventEmitter {
 
     /**
-     * @description add salt before process exit
+     * @description Remove a hook from hooks
+     * @param {String|Number} tag
+     * @return {Boolean} 
+     */
+    remove(tag: string | number): boolean;
+
+    /**
+     * @description Get all names of hook
+     */
+    names(): Array<string>;
+
+    /**
+     * @description Add salt before process exit
      * @param {Function} fn 
      * @param {Object} [context]
      */
-    before(fn: Function | Array<Function>, context: Object): void;
+    before(fn: Function | Array<Function>, context?: any): void;
     
     /**
      * The SIGABRT and SIGIOT signal is sent to a process to tell it to abort,

@@ -130,4 +130,80 @@ describe('Signals Test', function() {
     exit.SIGTERM();
     process.emit('SIGTERM', server);
   });
+
+
+  describe('Test method .remove() & .names()', function() {
+    const fns = [
+      function fn1() {},
+      function fn2() {},
+      function(){},
+      function fn4() {},
+    ];
+  
+    it('should get all names of hook', function(done) {
+      const exit = new Signals();
+      exit.before(fns, null);
+      expect(exit.names().length).to.equals(4);
+      done();
+    });
+  
+    it('should remove a hook failed if given -1', function(done) {
+      const exit = new Signals();
+      exit.before(fns, null);
+      expect(exit.remove(-1)).to.be.false;
+      done();
+    });
+  
+    it('should remove a hook failed if given 5', function(done) {
+      const exit = new Signals();
+      exit.before(fns, null);
+      expect(exit.remove(5)).to.be.false;
+      done();
+    });
+  
+    it('should remove a hook failed if given null', function(done) {
+      const exit = new Signals();
+      exit.before(fns, null);
+      expect(exit.remove(null)).to.be.false;
+      done();
+    });
+  
+    it('should remove a hook failed if given undefined', function(done) {
+      const exit = new Signals();
+      exit.before(fns, null);
+      expect(exit.remove(undefined)).to.be.false;
+      done();
+    });
+  
+    it('should remove a hook to be success with index 1', function(done) {
+      const exit = new Signals();
+      exit.before(fns, null);
+      expect(exit.remove(1)).to.be.true;
+      const names = exit.names();
+      expect(names.includes('fn1')).to.be.true;
+      expect(names.includes('anonymous_3')).to.be.true;
+      expect(names.includes('fn4')).to.be.true;
+      done();
+    });
+  
+  
+    it('should remove a hook failed if given `fn5`', function(done) {
+      const exit = new Signals();
+      exit.before(fns, null);
+      expect(exit.remove('fn5')).to.be.false;
+      done();
+    });
+  
+    it('should remove a hook to be success with name `fn4`', function(done) {
+      const exit = new Signals();
+      exit.before(fns, null);
+      expect(exit.remove('fn4')).to.be.true;
+      const names = exit.names();
+      expect(names.includes('fn1')).to.be.true;
+      expect(names.includes('anonymous_3')).to.be.true;
+      expect(names.includes('fn2')).to.be.true;
+      done();
+    });
+  });
+  
 });
