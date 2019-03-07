@@ -9,7 +9,7 @@ adding salt before node process exit
 
 ## Requirements
 
-Node.js version >= 7.*.*
+Node.js version >= 7.\*.\*
 
 ## Installation
 
@@ -39,7 +39,7 @@ exit.emit('SIGTERM'/* sigterm */); // Trigger event
 
 Also see: [Examples](test/__example__)
 
-## methods of `Signaler`
+## Methods of `Signaler`
 
 * **.before([fn1, fn2], context)** - only accept function or function of `Array`
 
