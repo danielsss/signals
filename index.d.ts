@@ -1,10 +1,6 @@
 import {EventEmitter} from 'events';
 
 declare namespace __SIGNALS__ {
-  if (process.platform !== 'win32') {}
-  if (process.platform === 'linux') {}
-
-
   export interface Signals extends EventEmitter {
 
     /**
