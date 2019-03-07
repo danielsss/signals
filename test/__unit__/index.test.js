@@ -1,12 +1,9 @@
 'use strict';
 
 const chai = require('chai');
-const mocha = require('mocha');
-const Signals = require('..');
+const Signals = require('../..');
 const os = require('os');
 const fs = require('fs');
-
-const {describe, it} = mocha;
 const expect = chai.expect;
 
 describe('Signals Test', function() {
@@ -114,5 +111,25 @@ describe('Signals Test', function() {
       expect(err.message.endsWith('must be a function')).to.be.true;
       done();
     }
+  });
+
+  it('should close the http server and exit process gracefully', function(done) {
+    const http = require('http');
+    const handler = function(req, res) {
+      res.setHeader('Content-Type', 'text/html');
+      res.setHeader('X-Foo', 'bar');
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.end('ok');
+    }
+    const server = http.createServer(handler);
+    server.listen(8088);
+    const exit = new Signals();
+    exit.before(function(server1){
+      expect(server1.listening).to.be.true;
+      server1.close(done);
+    });
+
+    exit.SIGTERM();
+    process.emit('SIGTERM', server);
   });
 });
