@@ -32,13 +32,13 @@ exit.emit('SIGTERM'/* sigterm */); // Trigger event
 
 Also see: [Examples](test/__example__)
 
-## Contents of `Signaler`
+## methods of `Signaler`
 
 * **.before([fn1, fn2], context)** - only accept function or function of `Array`
 
-## Available Signals
+## Available `Signals`
 
-##### defaults
+##### Defaults
 
 * **SIGABRT**
 * **SIGALRM**
@@ -46,7 +46,7 @@ Also see: [Examples](test/__example__)
 * **SIGINT**
 * **SIGTERM**
 
-##### non-win32
+##### Non-win32
 
 * **SIGVTALRM**
 * **SIGXCPU**
@@ -57,7 +57,7 @@ Also see: [Examples](test/__example__)
 * **SIGQUIT**
 * **SIGIOT**
 
-##### linux
+##### Linux
 
 * **SIGIO**
 * **SIGPOLL**
