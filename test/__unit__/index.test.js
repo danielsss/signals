@@ -1,8 +1,8 @@
 'use strict';
 
 const chai = require('chai');
-const Signals = require('../../lib');
-const os = require('os');
+const Signals = require('../..');
+const signals = require('../../lib/signals');
 const fs = require('fs');
 const expect = chai.expect;
 
@@ -16,9 +16,8 @@ describe('Signals Test', function() {
   it('should exit contains lower name of method', function(done) {
     
     const exit = new Signals({});
-    const keys = Object.keys(os.constants.signals);
 
-    for (const k of keys) {
+    for (const k of signals) {
       expect(typeof exit[k.toLowerCase()]).to.equals('function');
     }
     done();
@@ -26,9 +25,8 @@ describe('Signals Test', function() {
 
   it('should exit contains upper name of method', function(done) {
     const exit = new Signals({});
-    const keys = Object.keys(os.constants.signals);
 
-    for (const k of keys) {
+    for (const k of signals) {
       expect(typeof exit[k]).to.equals('function');
     }
     done();
