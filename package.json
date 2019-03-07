@@ -2,7 +2,7 @@
   "name": "signaleries",
   "version": "1.0.0",
   "description": "salt before node process exit",
-  "main": "index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "debug": "^4.1.1"
   },

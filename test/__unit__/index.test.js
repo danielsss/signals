@@ -1,7 +1,7 @@
 'use strict';
 
 const chai = require('chai');
-const Signals = require('../..');
+const Signals = require('../../lib');
 const os = require('os');
 const fs = require('fs');
 const expect = chai.expect;
