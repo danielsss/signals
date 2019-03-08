@@ -4,9 +4,7 @@
   "description": "salt before node process exit",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "dependencies": {
-    "debug": "^4.1.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "chai": "^4.2.0",
     "codacy-coverage": "^3.4.0",
