@@ -7,20 +7,20 @@
 
 adding salt before node process exit
 
-## Requirements
+## Dependencies
 
-Node.js version >= 7.\*.\*
+Node.js version >= 7.0.\*
 
 ## Installation
 
 ```shell
-npm i --save signaler
+npm i --save signaleries
 ```
 
 ## Usage
 
 ```js
-const Signaler = require('signaler');
+const Signaler = require('signaleries');
 
 const exit = new Signaler();
 exit.before([function(){
@@ -39,13 +39,13 @@ exit.emit('SIGTERM'/* sigterm */); // Trigger event
 
 Also see: [Examples](test/__example__)
 
-## Methods of `Signaler`
+## Methods of `signaleries`
 
 * **.before([fn1, fn2], context)** - only accept function or function of `Array`
 * **.remove(name | index)** - remove one with the hook you added
 * **.names()** - show you all names of hook you added
 
-## Available `Signals`
+## The signals that can be listened
 
 ##### Defaults
 
