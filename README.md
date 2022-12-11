@@ -73,7 +73,3 @@ Also see: [Examples](test/__example__)
 * **SIGPWR**
 * **SIGSTKFLT**
 * **SIGUNUSED**
-
-## LICENCE
-
-[MIT License](./README.md)
