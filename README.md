@@ -47,6 +47,7 @@ Also see: [Examples](test/__example__)
 
 ## The signals that can be listened
 
+
 ##### Defaults
 
 * **SIGABRT**
